@@ -1,8 +1,8 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { CategoriesScreen } from './src/screens';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
+import MealsNavigator from './src/navigation/MealsNavigator';
 
 const fetchFont = () => {
   return Font.loadAsync({
@@ -16,7 +16,7 @@ const App = () => {
   const [isReady, setIsReady] = useState(false);
   if (!isReady) return <AppLoading startAsync={fetchFont} onFinish={() => setIsReady(true)} onError={console.warn} />;
 
-  return <CategoriesScreen />;
+  return <MealsNavigator />;
 };
 
 export default App;
