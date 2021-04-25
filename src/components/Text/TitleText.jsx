@@ -13,5 +13,7 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: 'poppins-semi-bold',
     fontSize: 18,
+    includeFontPadding: false,
+    textAlignVertical: 'center',
   },
 });

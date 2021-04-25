@@ -7,7 +7,9 @@ const IconText = ({ children, style, dataText, dataIcon }) => {
   return (
     <View style={[styles.container, style]}>
       <Ionicons style={styles.icon} size={16} {...dataIcon} />
-      <BodyText {...dataText}>{children}</BodyText>
+      <BodyText style={styles.text} {...dataText}>
+        {children}
+      </BodyText>
     </View>
   );
 };
@@ -21,5 +23,9 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginRight: 5,
+  },
+  text: {
+    includeFontPadding: false,
+    textAlignVertical: 'center',
   },
 });

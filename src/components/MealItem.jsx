@@ -1,27 +1,34 @@
 // @ts-nocheck
 import React from 'react';
-import { View, ImageBackground, Text, StyleSheet } from 'react-native';
+import { View, ImageBackground, TouchableOpacity, StyleSheet, TouchableNativeFeedback, Platform } from 'react-native';
 import { TitleText, IconText } from '../components';
 import { COLORS, RADIUS } from '../constants/constants';
 
-const MealItem = ({ title, imageUrl, duration, affordability, complexity }) => {
+const MealItem = ({ title, imageUrl, duration, affordability, complexity, onSelect }) => {
+  let TouchableCmp = TouchableOpacity;
+  if (Platform.OS === 'android' && Platform.Version >= 21) {
+    TouchableCmp = TouchableNativeFeedback;
+  }
+
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <ImageBackground source={{ uri: imageUrl }} style={styles.background}>
-          <View style={styles.overlay}>
-            <TitleText style={styles.title} numberOfLines={1}>
-              {title}
-            </TitleText>
-          </View>
-        </ImageBackground>
+    <TouchableCmp onPress={onSelect}>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <ImageBackground source={{ uri: imageUrl }} style={styles.background}>
+            <View style={styles.overlay}>
+              <TitleText style={styles.title} numberOfLines={1}>
+                {title}
+              </TitleText>
+            </View>
+          </ImageBackground>
+        </View>
+        <View style={styles.descContainer}>
+          <IconText dataIcon={{ name: 'time-outline' }}>{duration}m</IconText>
+          <IconText dataIcon={{ name: 'restaurant-outline' }}>{complexity}m</IconText>
+          <IconText dataIcon={{ name: 'wallet-outline' }}>{affordability}</IconText>
+        </View>
       </View>
-      <View style={styles.descContainer}>
-        <IconText dataIcon={{ name: 'time-outline' }}>{duration}m</IconText>
-        <IconText dataIcon={{ name: 'restaurant-outline' }}>{complexity}m</IconText>
-        <IconText dataIcon={{ name: 'wallet-outline' }}>{affordability}</IconText>
-      </View>
-    </View>
+    </TouchableCmp>
   );
 };
 
@@ -61,11 +68,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 15,
   },
-  characteristic: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-
   textCharacteristic: {
     fontSize: 18,
   },

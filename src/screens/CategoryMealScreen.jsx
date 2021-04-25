@@ -13,6 +13,7 @@ const CategoryMealScreen = ({ navigation }) => {
       duration={item.duration}
       affordability={item.affordability}
       complexity={item.complexity}
+      onSelect={() => navigation.navigate({ routeName: 'MealDetail', params: { mealId: item.id } })}
     />
   );
 
