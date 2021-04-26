@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 import { CATEGORIES } from '../data/dummy-data';
-import { CategoryItem } from '../components';
+import CategoryItem from '../components/CategoryItem';
 
 const CategoriesScreen = ({ navigation }) => {
   const categoryItem = ({ item }) => (

@@ -1,8 +1,9 @@
 // @ts-nocheck
 import React from 'react';
 import { View, ImageBackground, TouchableOpacity, StyleSheet, TouchableNativeFeedback, Platform } from 'react-native';
-import { TitleText, IconText } from '../components';
 import { COLORS, RADIUS } from '../constants/constants';
+import TitleText from '../components/Text/TitleText';
+import IconText from '../components/Text/IconText';
 
 const MealItem = ({ title, imageUrl, duration, affordability, complexity, onSelect }) => {
   let TouchableCmp = TouchableOpacity;
@@ -23,9 +24,15 @@ const MealItem = ({ title, imageUrl, duration, affordability, complexity, onSele
           </ImageBackground>
         </View>
         <View style={styles.descContainer}>
-          <IconText dataIcon={{ name: 'time-outline' }}>{duration}m</IconText>
-          <IconText dataIcon={{ name: 'restaurant-outline' }}>{complexity}m</IconText>
-          <IconText dataIcon={{ name: 'wallet-outline' }}>{affordability}</IconText>
+          <IconText dataIcon={{ name: 'time-outline', color: COLORS.primary }} textStyle={styles.descText}>
+            {duration}m
+          </IconText>
+          <IconText dataIcon={{ name: 'restaurant-outline', color: COLORS.primary }} textStyle={styles.descText}>
+            {complexity}m
+          </IconText>
+          <IconText dataIcon={{ name: 'wallet-outline', color: COLORS.primary }} textStyle={styles.descText}>
+            {affordability}
+          </IconText>
         </View>
       </View>
     </TouchableCmp>
@@ -67,6 +74,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 15,
+  },
+  descText: {
+    color: COLORS.primary,
   },
   textCharacteristic: {
     fontSize: 18,

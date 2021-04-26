@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, Button, FlatList, StyleSheet } from 'react-native';
-import { MealItem } from '../components';
+import { FlatList } from 'react-native';
 import { CATEGORIES, MEALS } from '../data/dummy-data';
+import MealItem from '../components/MealItem';
 
 const CategoryMealScreen = ({ navigation }) => {
   const categoryId = navigation.getParam('categoryId');

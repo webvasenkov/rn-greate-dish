@@ -31,6 +31,9 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 150,
     margin: 15,
+    borderRadius: 8,
+    overflow: Platform.OS === 'android' && Platform.Version >= 21 ? 'hidden' : 'visible',
+    ...SHADOW.android,
   },
   categoryItem: {
     flex: 1,
@@ -41,7 +44,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
     borderRadius: 8,
-    ...SHADOW,
+    ...SHADOW.ios,
   },
   title: {
     textAlign: 'right',
