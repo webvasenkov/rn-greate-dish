@@ -16,6 +16,8 @@ import FiltersScreen from '../screens/FiltersScreen';
 const defaultNavigationOptions = {
   headerTintColor: Platform.OS === 'android' ? COLORS.primary : COLORS.accent,
   headerStyle: { backgroundColor: Platform.OS === 'android' ? COLORS.accent : COLORS.primary },
+  headerTitleStyle: { fontFamily: 'poppins-semi-bold', textAlign: 'right', textAlignVertical: 'center' },
+  HeaderBackTitleStyle: { fontFamily: 'poppins-light' },
 };
 
 const MealsNavigator = createStackNavigator(
