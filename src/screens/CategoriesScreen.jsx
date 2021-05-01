@@ -18,7 +18,7 @@ const CategoriesScreen = ({ navigation }) => {
 };
 
 CategoriesScreen.navigationOptions = ({ navigation }) => ({
-  headerLeft: (
+  headerLeft: () => (
     <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
       <Item title='Menu' iconName='menu-outline' onPress={navigation.toggleDrawer} />
     </HeaderButtons>
