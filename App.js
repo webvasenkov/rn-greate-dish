@@ -1,5 +1,7 @@
 // @ts-nocheck
 import React, { useState } from 'react';
+import { Provider } from 'react-redux';
+import { store } from './src/store/store';
 import { enableScreens } from 'react-native-screens';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
@@ -19,7 +21,11 @@ const App = () => {
   const [isReady, setIsReady] = useState(false);
   if (!isReady) return <AppLoading startAsync={fetchFont} onFinish={() => setIsReady(true)} onError={console.warn} />;
 
-  return <MealsNavigator />;
+  return (
+    <Provider store={store}>
+      <MealsNavigator />
+    </Provider>
+  );
 };
 
 export default App;

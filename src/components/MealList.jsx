@@ -10,7 +10,9 @@ const MealList = ({ navigation, mealData }) => {
       duration={item.duration}
       affordability={item.affordability}
       complexity={item.complexity}
-      onSelect={() => navigation.navigate({ routeName: 'MealDetail', params: { mealId: item.id } })}
+      onSelect={() =>
+        navigation.navigate({ routeName: 'MealDetail', params: { mealId: item.id, mealTitle: item.title } })
+      }
     />
   );
 

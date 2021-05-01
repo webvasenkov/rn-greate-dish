@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Text } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
@@ -16,7 +16,7 @@ import FiltersScreen from '../screens/FiltersScreen';
 const defaultNavigationOptions = {
   headerTintColor: Platform.OS === 'android' ? COLORS.primary : COLORS.accent,
   headerStyle: { backgroundColor: Platform.OS === 'android' ? COLORS.accent : COLORS.primary },
-  headerTitleStyle: { fontFamily: 'poppins-semi-bold', textAlign: 'right', textAlignVertical: 'center' },
+  headerTitleStyle: { fontFamily: 'poppins-semi-bold' },
   HeaderBackTitleStyle: { fontFamily: 'poppins-light' },
 };
 
@@ -46,6 +46,7 @@ const configTabNavigator = {
       tabBarIcon: (tabInfo) => <Ionicons name='restaurant' size={18} color={tabInfo.tintColor} />,
       barStyle: { backgroundColor: COLORS.primary },
       activeColor: COLORS.accent,
+      tabBarLabel: Platform.OS === 'android' ? <Text style={{ fontFamily: 'poppins-semi-bold' }}>Meals</Text> : 'Meals',
     },
   },
   Favorites: {
@@ -54,6 +55,8 @@ const configTabNavigator = {
       tabBarIcon: (tabInfo) => <Ionicons name='heart' size={18} color={tabInfo.tintColor} />,
       barStyle: { backgroundColor: COLORS.accent },
       activeColor: COLORS.primary,
+      tabBarLabel:
+        Platform.OS === 'android' ? <Text style={{ fontFamily: 'poppins-semi-bold' }}>Favorites</Text> : 'Favorites',
     },
   },
 };
@@ -66,6 +69,7 @@ const MealsFavTabsNavigator =
     : createBottomTabNavigator(configTabNavigator, {
         tabBarOptions: {
           activeTintColor: COLORS.accent,
+          labelStyle: { fontFamily: 'poppins-semi-bold' },
         },
       });
 
